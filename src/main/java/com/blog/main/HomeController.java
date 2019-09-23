@@ -1,6 +1,7 @@
 package com.blog.main;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.blog.VO.BlogMember;
 import com.blog.service.BlogService;
@@ -61,9 +63,26 @@ public class HomeController {
 		return "detail";
 	}
 	@GetMapping("login")
-	public String login(Model model) {
-		return "login";
+	public void login(Model model) {
+		
 	}
+	
+	@PostMapping("login")
+	@ResponseBody
+	public String login(String id,String pwd,Model model) {
+		String pwd1 = bService.login(id);
+		String flag;
+		if(pwd.equals("")) {
+			flag ="0";
+		}else if(pwd.equals(pwd1)) {
+			flag ="1";
+		}
+		else {
+			flag = "2";
+		}
+		return flag;
+	}
+	
 	@GetMapping("join")
 	public String join() {
 		return "join";
@@ -72,10 +91,7 @@ public class HomeController {
 	@PostMapping("join")
 	public void Join(BlogMember bm) {
 		bService.join(bm);
-		System.out.println(bm.getId());
-		System.out.println(bm.getPwd());
-		System.out.println(bm.getName());
-		System.out.println(bm.getGender());
+
 	}	
 	
 }

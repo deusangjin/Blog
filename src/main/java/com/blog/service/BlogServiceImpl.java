@@ -1,5 +1,6 @@
 package com.blog.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class BlogServiceImpl implements BlogService{
 	
 	public void join(BlogMember bm) {
 		bMap.join(bm);
-
+	}
+	public String login(String id) {
+		String pwd = bMap.login(id);
+		return pwd;
 	}
 }

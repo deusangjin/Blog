@@ -57,6 +57,30 @@ $(function(){
   	$(".loginDim").hide();
   });
 });
+
+$(document).ready(function(){
+	$("#btn-login").click(function(){
+		$.ajax({
+			type:"post",
+			url:"login",
+			data:{"id":$("#id").val(),"pwd":$("#pwd").val()},
+			success : function(data){
+				alert(data);
+				if(data.trim()=="1"){
+					alert("${id}회원 로그인");
+					location.href="login";
+				}else if(data.trim=="2"){
+					alert("회원이 아닙니다.");
+					$("#id").focus();
+				}
+				else if(data.trim=="0"){
+					alert("비밀번호 입력하세요");
+				}
+			}
+		});
+	})
+	
+});
 </script>
 </head>
 <body>
@@ -68,11 +92,11 @@ $(function(){
       <tbody>
         <tr>
           <th><label for="">ID</label></th>
-          <td><input type="text" name="userid-login" placeholder="아이디를 입력하세요!" id="userid-login" class="form-control"></td>
+          <td><input type="text" name="id" placeholder="아이디를 입력하세요!" id="id" class="form-control"></td>
         </tr>
         <tr>
           <th><label for="">PW</label></th>
-          <td><input type="password" name="userid-login" placeholder="비밀번호를 입력해주세요!" id="pwd-login" class="form-control"></td>
+          <td><input type="password" name="pwd" placeholder="비밀번호를 입력해주세요!" id="pwd" class="form-control"></td>
         </tr>
       </tbody>
     </table>
@@ -82,6 +106,5 @@ $(function(){
     <a href="#a" class="loginClose"><img src="imges/BtnX.png"></a>
   </div>
   <div class="loginDim"></div>
-  
 </body>
 </html>
