@@ -28,6 +28,7 @@
                   <!-- 리스트 for문 값셋팅 -->
               </tbody>
           </table>
+          <a href="insert"><input type="button" value="글쓰기"></a>
   </div>
 
 </body>

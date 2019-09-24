@@ -40,14 +40,6 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script>
 //로그인
-/* $(document).ready(function(){
-      $(".loginPopup").show();
-      $(".loginDim").show();
-  $(".loginPopup .loginClose").on('click',function(){
-      $(this).parent().hide();
-      $(".loginDim").hide();
-  });
-}); */
 $(function(){
 	$(".loginPopup").show();
 	$(".loginDim").show();

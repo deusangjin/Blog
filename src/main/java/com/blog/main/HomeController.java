@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +71,7 @@ public class HomeController {
 	
 	@PostMapping("login")
 	@ResponseBody
-	public String login(String id,String pwd,Model model) {
+	public String login(String id,String pwd,Model model,HttpSession session) {
 		String pwd1 = bService.login(id);
 		String flag;
 		if(pwd.equals("")) {
@@ -91,7 +93,7 @@ public class HomeController {
 	@PostMapping("join")
 	public void Join(BlogMember bm) {
 		bService.join(bm);
-
 	}	
+
 	
 }
