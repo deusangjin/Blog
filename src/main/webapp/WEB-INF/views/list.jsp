@@ -18,13 +18,13 @@
 
 		getSearch(1, "");
 
-		$("#btnSearch").on("click", function() {
+/* 		$("#btnSearch").on("click", function() {
 			if ($("#word").val() == "") {
 				alert("검색어를 입력하세요.");
 				return false;
-			}
+			} */
 			getSearch(1, $("#word").val());
-		});
+	//	});
 	})
 
 	function getSearch(pageNum, word) {
@@ -35,21 +35,25 @@
 			$("#area").html(data);
 		});
 	}
+
 </script>
 
 </head>
 <body>
   <%@ include file="header.jsp"%>
+  <%@include file="aside.jsp" %>
   <div class="container ">
   
     <div id="area"> </div>
     
-    <a><input type="button" value="글쓰기" class="btn pull-right" onclick="location.href='insert'"></a>
-    
-
+    <div class="text-right">
+      <input type="button" value="글쓰기" onclick="location.href='insert'">
+    </div>
     <div class="text-center">
-      <input type="text" id="word"> <input type="button"
-        id="btnSearch" value="검색">
+      <input type="text" id="word">
+      
+      <input type="button" id="btnSearch" value="검색">
+     
     </div>
 
   </div>

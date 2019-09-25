@@ -7,6 +7,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<%@include file="aside.jsp" %>
 ${id }
 </body>
 </html>

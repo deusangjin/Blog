@@ -76,7 +76,8 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<%@include file="mainView.jsp"%>
+<%@include file="header.jsp" %>
+<%@include file="aside.jsp" %>
 <div class="loginPopup">
     <h2>로그인</h2>
     <div class="loginCon">

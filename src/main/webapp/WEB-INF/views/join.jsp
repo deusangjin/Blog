@@ -11,7 +11,7 @@
     }
     .popup h2{ padding: 0 0 5px; border-bottom: 3px solid #444; font-weight: normal; font-size: 36px; color:#222; text-align: center;
         line-height: 100% }
-    .popup .close{ position: absolute; right: 40px; top: 40px; width: 41px; height: 41px;
+    .popup .joinCloseBtn{ position: absolute; right: 40px; top: 40px; width: 41px; height: 41px;
     background-image: url("../img/BtnX.png")  no-repeat; color: transparent; }
     
     .popup .con {padding:  14px 34px; border-bottom: 1px solid #e8e8e8; margin: auto;}
@@ -42,7 +42,7 @@ $(function(){
 	$(".popup").show();
 	$(".dim").show();
 	
-  $(".popup .close").on('click',function(){
+  $(".popup .joinCloseBtn").on('click',function(){
     $(this).parent().hide();
     $(".dim").hide();
 	});
@@ -79,7 +79,8 @@ $(document).ready(function(){
 
 </head>
 <body>
-<%@include file="mainView.jsp"%>
+<%@include file="header.jsp" %>
+<%@include file="aside.jsp" %>
 <div class="popup">
     <h2>회원가입</h2>
     <div class="con">
@@ -121,7 +122,7 @@ $(document).ready(function(){
     </form>
     </div>
     <input type="button" class="btn  btn-danger btn-round" id="memberInsert" value="확인">
-    <a href="#a" class="close"><img src="imges/BtnX.png"></a>
+    <a href="#a" class="joinCloseBtn"><img src="imges/BtnX.png"></a>
   </div>
   <div class="dim"></div>
 </body>

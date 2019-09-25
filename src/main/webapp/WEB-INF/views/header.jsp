@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/all.js"></script>
-    <!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!-- <script src="js/bolg.js"></script> -->
-
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <style>
   .ka{
     padding-top: 30px;
@@ -17,11 +16,19 @@
   .container-fluid{
   padding-left: 0px;
   padding-right: 0px;
-  
   }
-
+  #logo{
+    cursor:pointer;
+  }
 </style>
+<script>
 
+	$(function(){
+		$("#logo").on("click",function(){
+			location.href="index";
+		})
+	});
+</script>
 <header>
   <div class="container-fluid ">
     <div class="nav-wrapper" style="background-image: url('imges/ViewTest.jpg');">
@@ -32,7 +39,7 @@
       </div>
       <div class="center">
         <h1 class="text text-uppercase">
-          <strong>blog</strong>
+          <strong id="logo">blog</strong>
         </h1>
       </div>
       <div class="left-side">
@@ -47,13 +54,13 @@
       </div>
     </div>
   </div>
-  
-<aside style="margin-top: 100px;">
+  <%@include file="aside.jsp" %>
+<!-- <aside style="margin-top: 100px;">
     <div class="col-md-1">
-      <!--   사이드 바 메뉴 -->
-      <!--    패널 타이틀1 -->
+        사이드 바 메뉴
+         패널 타이틀1
       <div class="panel panel-info">
-        <!--  사이드바 메뉴목록1 -->
+         사이드바 메뉴목록1
         <ul class="list-group">
           <li class="list-group-item"><a href="list">임시1</a></li>
           <li class="list-group-item"><a href="#">임시2</a></li>
@@ -61,7 +68,7 @@
         </ul>
       </div>
     </div>
-  </aside>
+  </aside> -->
 <!--   <aside style="margin-top: 100px;">
 
   </aside> -->
