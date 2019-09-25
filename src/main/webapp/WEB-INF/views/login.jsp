@@ -59,8 +59,8 @@ $(document).ready(function(){
 			success : function(data){
 				alert(data);
 				if(data.trim()=="1"){
-					alert("${id}회원 로그인");
-					location.href="login";
+					alert("회원 로그인");
+					location.href="index";
 				}else if(data.trim=="2"){
 					alert("회원이 아닙니다.");
 					$("#id").focus();
