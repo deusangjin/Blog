@@ -5,11 +5,7 @@
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!-- include summernote css/js-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-<!-- include summernote-ko-KR -->
-<script src="/resources/js/summernote-ko-KR.js"></script>
+<!-- <script src="js/bolg.js"></script> -->
 
 <style>
   .ka{
@@ -18,8 +14,14 @@
   .list-group-item{
     padding: 0px;
   }
+  .container-fluid{
+  padding-left: 0px;
+  padding-right: 0px;
+  
+  }
 
 </style>
+
 <header>
   <div class="container-fluid ">
     <div class="nav-wrapper" style="background-image: url('imges/ViewTest.jpg');">
@@ -45,8 +47,8 @@
       </div>
     </div>
   </div>
-
-  <aside style="margin-top: 100px;">
+  
+<aside style="margin-top: 100px;">
     <div class="col-md-1">
       <!--   사이드 바 메뉴 -->
       <!--    패널 타이틀1 -->
@@ -60,4 +62,7 @@
       </div>
     </div>
   </aside>
+<!--   <aside style="margin-top: 100px;">
+
+  </aside> -->
 </header>

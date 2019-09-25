@@ -28,4 +28,9 @@
   <mybatis-spring:scan base-package="com.blog.mapper"/>
   <context:component-scan base-package="com.blog.service"/>
   <context:component-scan base-package="com.blog.VO"/>
+    <context:component-scan base-package="com.blog">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+                              <!-- 이 경로에 있는 Conrtoller를 빼고 실행  -->
+<!-- "com.mymember"에 해당하는 모든 하위 경로에 component-scan의 기본 필터를 사용하고 annotation 타입의 Controller 필터만 제외한다는 의미이다. -->
+  </context:component-scan>
 </beans>

@@ -7,5 +7,6 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+${id }
 </body>
 </html>
