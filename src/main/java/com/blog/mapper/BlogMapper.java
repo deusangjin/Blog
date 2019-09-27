@@ -16,5 +16,8 @@ public interface BlogMapper {
 	
 	public ArrayList<BlogBoard> list(HashMap<String, Object> map);
 	
-	public int getCount(String word);
+	public int getCount(HashMap<String, Object> map);
+	
+
+	public void insert(BlogBoard bb);
 }
