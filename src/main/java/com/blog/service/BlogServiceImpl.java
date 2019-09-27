@@ -24,18 +24,31 @@ public class BlogServiceImpl implements BlogService{
 		String pwd = bMap.login(id);
 		return pwd;
 	}
-	public ArrayList<BlogBoard> list(int startRow, int endRow,String word){
+	public ArrayList<BlogBoard> list(int startRow, int endRow,String word,String id){
 		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("startRow", startRow);
 		map.put("endRow",endRow);
 		map.put("word",word);
+		map.put("id",id);
+
 		ArrayList<BlogBoard> arr = bMap.list(map);
 
 		return arr;
  	}
-	public int getCount(String word) {
-	int	count = bMap.getCount(word);
+
+	public void insert(BlogBoard bb) {
+	
+		bMap.insert(bb);
+	}	
+	
+	public int getCount(String word,String id) {
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("word", word);
+		map.put("id",id);
+
+		int	count = bMap.getCount(map);
 		return count;
 	}
 }

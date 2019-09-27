@@ -11,7 +11,7 @@
     }
     .popup h2{ padding: 0 0 5px; border-bottom: 3px solid #444; font-weight: normal; font-size: 36px; color:#222; text-align: center;
         line-height: 100% }
-    .popup .close{ position: absolute; right: 40px; top: 40px; width: 41px; height: 41px;
+    .popup .joinCloseBtn{ position: absolute; right: 40px; top: 40px; width: 41px; height: 41px;
     background-image: url("../img/BtnX.png")  no-repeat; color: transparent; }
     
     .popup .con {padding:  14px 34px; border-bottom: 1px solid #e8e8e8; margin: auto;}
@@ -42,7 +42,7 @@ $(function(){
 	$(".popup").show();
 	$(".dim").show();
 	
-  $(".popup .close").on('click',function(){
+  $(".popup .joinCloseBtn").on('click',function(){
     $(this).parent().hide();
     $(".dim").hide();
 	});
@@ -60,30 +60,31 @@ $(document).ready(function(){
 			alert("비밀번호를 입력해주세요!");
 			$("#pwd").focus();
 			return false;
-		}
+		} 
 		if($("#pwd_check").val()==""){
 			alert("비밀번호를 한번 더 입력해주세요!");
 			$("#pwd_check").focus();
 			return false;
-		}
+		} 
 		if($("#name").val()==""){
 			alert("이름을 입력해주세요!");
 			$("#name").focus();
 			return false;
 		}
-
-		$("#frm").submit();
+		$("#frmJoin").submit();
 	});
 });
 </script>
 
 </head>
 <body>
-<%@include file="mainView.jsp"%>
+<%@include file="mainView.jsp" %>
+
 <div class="popup">
     <h2>회원가입</h2>
     <div class="con">
-    <form action="join" method="post" id="frm" > 
+    
+    <form action="join" method="POST" id="frmJoin" > 
      <input type="hidden" name="uid" id="uid">
     <table class="type1">
       <caption>
@@ -100,11 +101,11 @@ $(document).ready(function(){
         <tr>
           <th><label for="">PW</label></th>
           <td><input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요!"></td>
-        </tr>
-        <!-- <tr>
+        </tr><!-- 
+         <tr>
           <th><label for="">PW CHECK</label></th>
           <td><input type="password" class="form-control" id="pwd_check" name="pwd_check" placeholder="비밀번호를 다시 입력해주세요!"></td>
-        </tr> -->
+        </tr>  -->
         <tr>
           <th><label for="">NAME</label></th>
           <td><input type="text" name="name" id="name" class="form-control"></td>
@@ -121,7 +122,7 @@ $(document).ready(function(){
     </form>
     </div>
     <input type="button" class="btn  btn-danger btn-round" id="memberInsert" value="확인">
-    <a href="#a" class="close"><img src="imges/BtnX.png"></a>
+    <a href="#a" class="joinCloseBtn"><img src="imges/BtnX.png"></a>
   </div>
   <div class="dim"></div>
 </body>

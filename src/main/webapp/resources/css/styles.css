@@ -44,6 +44,7 @@ body {
   color: #8a8a8a;
   text-decoration: none;
   transition: color 0.5s;
+  font-size: 12px;
 }
 
 .nav-link-wrapper:hover {
