@@ -3,48 +3,36 @@
  */
 
 	
-	$(document).ready(function() {
- 		getSearch(1,"");
- 		
-   	$("#btnSearch").on("click", function() {
-  			if ($("#word").val() == "") {
-  				alert("검색어를 입력하세요.");
-  				return false;
-  			} 
-  			getSearch(1, $("#word").val());
-  		});
-   	
-   	$("#insertBtn").on("click",function(){
-   		$.ajax({
-  			type : "post",
+	function Search(word){
+		if ($("#word").val() == "") {
+				alert("검색어를 입력하세요.");
+				return false;
+			} 
+			getSearch(1, $("#word").val());
+	}
+	
+	function Insert(){
+		$.ajax({
+  			type : "get",
   			url : "insert",
   			success : function(data){
   				$("#view").html(data);
   			}
   		})
-   	})
-   	
-   	
-	})
+	}
 	
-/*	function category(subject){
+	function getSearch(pageNum, word,subject) {
 		$.ajax({
-			type: "post",
+			type : "post",
 			url : "list",
-			data : {"subject" :subject},
+			data : {
+				"pageNum" : pageNum,
+				"word" : word,
+				"id" : $("#id").val(),
+				"subject" : subject
+				},
 			success : function(data){
-				$("#view").html(data);
+				$("#area").html(data);
 			}
 		})
-	}*/
-	function getSearch(pageNum, word) {
-		$.post("list", {
-			"pageNum" : pageNum,
-			"word" : word,
-			"id" : $("#id").val(),
-
-		}, function(data) {
-			$("#area").html(data);
-		});
 	} 
-	

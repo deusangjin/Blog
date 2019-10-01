@@ -24,13 +24,14 @@ public class BlogServiceImpl implements BlogService{
 		String pwd = bMap.login(id);
 		return pwd;
 	}
-	public ArrayList<BlogBoard> list(int startRow, int endRow,String word,String id){
-		
+	public ArrayList<BlogBoard> list(int startRow, int endRow,String word,String id,String subject){
+
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("startRow", startRow);
 		map.put("endRow",endRow);
 		map.put("word",word);
 		map.put("id",id);
+		map.put("subject",subject);
 
 		ArrayList<BlogBoard> arr = bMap.list(map);
 
@@ -38,15 +39,16 @@ public class BlogServiceImpl implements BlogService{
  	}
 
 	public void insert(BlogBoard bb) {
-	
 		bMap.insert(bb);
 	}	
 	
-	public int getCount(String word,String id) {
+	public int getCount(String word,String id,String subject) {		
+
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("word", word);
 		map.put("id",id);
+		map.put("subject",subject);
 
 		int	count = bMap.getCount(map);
 		return count;
