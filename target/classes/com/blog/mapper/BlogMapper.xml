@@ -4,12 +4,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.blog.mapper.BlogMapper">
-  <!-- sql작성 -->
-  <insert id="join">
-    insert into blogmember(id,pwd,name,gender) VALUES(#{id},#{pwd},#{name},#{gender})
-  </insert>
-  
-  <select id="login" resultType="String">
-    select pwd from blogmember where id= #{id}
-  </select>
+	<!-- sql작성 -->
+	<insert id="join">
+		insert into blogmember(id,pwd,name,gender)
+		VALUES(#{id},#{pwd},#{name},#{gender})
+	</insert>
+
+	<select id="login" resultType="String">
+		select pwd from blogmember where id= #{id}
+	</select>
+
+	<select id="list" parameterType="java.util.HashMap"
+		resultType="com.blog.VO.BlogBoard">
+
+		<if test="subject!=''">
+			select * from (select rownum rn,aa.* from
+			(select * from board where title like '%'||#{word}||'%' and id = #{id}
+			and subject = #{subject}
+			order by num desc)aa)
+			where rn&gt;=${startRow} and rn&lt;=${endRow}
+		</if>
+		<if test ="subject==''">
+			select * from (select rownum rn,aa.* from
+			(select * from board where title like '%'||#{word}||'%' and id = #{id}
+			order by num desc)aa)
+			where rn&gt;=${startRow} and rn&lt;=${endRow}
+		</if>
+
+
+	</select>
+
+	<insert id="insert">
+		insert into board (num,id,title,cal,content,subject) values
+		(BOARD_SEQ.nextval,#{id},#{title},sysdate,#{content},#{subject})
+
+	</insert>
+
+	<select id="getCount" parameterType="java.util.HashMap"
+		resultType="Integer">
+		select count(*) from board where title like '%'||#{word}||'%' and id =
+		#{id}
+		<if test="subject!=''">
+			and subject = #{subject}
+		</if>
+
+	</select>
 </mapper>
