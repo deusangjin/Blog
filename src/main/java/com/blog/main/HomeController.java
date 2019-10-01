@@ -66,21 +66,20 @@ public class HomeController {
 
 	@GetMapping("list")
 	public void list() {
-
 	}
 
 	@PostMapping("list")
 	public String list(String pageNum, String word, String id, Model model, String subject, HttpSession session) {
-
+		
+		System.out.println("listpost");
+		System.out.println(subject);
 		String pageHtml;
 		ArrayList<BlogBoard> arr;
 		subject = subject == null ? "" : subject;
 		word = word == null ? "" : word;
 		if (pageNum == null)
 			pageNum = "1";
-		System.out.println(subject);
-		System.out.println(id);
-		System.out.println(word);
+
 		int currentPage = Integer.parseInt(pageNum);
 		int count = bService.getCount(word, id, subject);
 		int pageSize = 5;
@@ -96,7 +95,6 @@ public class HomeController {
 		model.addAttribute("count", count);
 		model.addAttribute("boardNum", boardNum);
 		model.addAttribute("pageHtml", pageHtml);
-
 		return "listTable";
 	}
 
@@ -112,7 +110,7 @@ public class HomeController {
 	}
 
 	@PostMapping("login")
-	public String login(String id, String pwd, Model model, HttpSession session, HttpServletResponse response) {
+	public String login(String id, String pwd, HttpSession session) {
 		String pwd1 = bService.login(id);
 
 		if (pwd.equals(pwd1)) {
@@ -133,5 +131,12 @@ public class HomeController {
 		bService.join(bm);
 		return "redirect:/";
 	}
-
+	
+	@GetMapping("SubjectView")
+	public void SubjectView(String subject,HttpSession session,Model model) {
+		System.out.println("-----------------------------");		
+		System.out.println(subject);
+		model.addAttribute("subject",subject);
+			
+	}
 }
