@@ -1,21 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<script src="js/IndexScript.js"></script>
-<link rel="stylesheet" href="css/styles.css">
-<script src="js/all.js"></script>
-<link
-  href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-  rel="stylesheet">
-<script
-  src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script
-  src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<link
-  href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css"
-  rel="stylesheet">
-<script
-  src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <style>
 html.open {
 	overflow: hidden;
@@ -96,43 +81,44 @@ html.open {
 <div class="slideBtn"></div>
 <div onclick="history.back();" class="page_cover"></div>
 <div id="menu">
-  <p id="android">
-    <input type="hidden" id="hAndroid" value="안드로이드"> 안드로이드
-  </p>
-  <p id="java">
-    <input type="hidden" id="hJava" value="JAVA">JAVA
-  </p>
-  <p id="db">
-    <input type="hidden" id="hDb" value="DB">DB
-  </p>
-  <p id="spring">
-    <input type="hidden" id="hSpring" value="SPRING">SPRING
-  </p>
-  <p id="jsp">
-    <input type="hidden" id="hJsp" value="JSP">JSP
-  </p>
-  <div onclick="history.back();" class="close"></div>
+	<p id="android">
+		<input type="hidden" id="hAndroid" value="안드로이드"> 안드로이드
+	</p>
+	<p id="java">
+		<input type="hidden" id="hJava" value="JAVA">JAVA
+	</p>
+	<p id="db">
+		<input type="hidden" id="hDb" value="DB">DB
+	</p>
+	<p id="spring">
+		<input type="hidden" id="hSpring" value="SPRING">SPRING
+	</p>
+	<p id="jsp">
+		<input type="hidden" id="hJsp" value="JSP">JSP
+	</p>
+	<div onclick="history.back();" class="close"></div>
 </div>
+
 <script>
 	$(".slideBtn").click(function() {
 		$("#menu,.page_cover,html").addClass("open");
 		window.location.hash = "#open";
 
 		$("#android").on("click", function() {
-			category($("#hAndroid").val());
-		})
-		$("#java").on("click", function() {
-			category($("#hJava").val());
-		})
+			getSearch(1,"",$("#hAndroid").val());
+		});	
+	 	$("#java").on("click", function() {
+			getSearch(1,"",$("#hJava").val());
+		});
 		$("#db").on("click", function() {
-			category($("#hDb").val());
-		})
+			getSearch(1,"",$("#hDb").val());
+		});
 		$("#spring").on("click", function() {
-			category($("#hSpring").val());
-		})
+			getSearch(1,"",$("#hSpring").val());
+		});
 		$("#jsp").on("click", function() {
-			category($("#hJsp").val());
-		})
+			getSearch(1,"",$("#hJsp").val());
+		});
 	});
 
 	window.onhashchange = function() {

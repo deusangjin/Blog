@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service("pageAction")
 public class pagingAction {
-	public String paging(int count,int pageSize,int currentPage,String word) {
+	public String paging(int count,int pageSize,int currentPage,String word,String subject) {
 		String file = "javascript:getSearch";
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		int pageBlock = 3;
@@ -16,7 +16,7 @@ public class pagingAction {
 		if(count>0) {
 			if(startPage>pageBlock) {
 				sb.append("<a href="+file+"(");
-				sb.append((startPage-pageBlock)+",'"+word+"')");
+				sb.append((startPage-pageBlock)+",'"+word+"','"+subject+"')");
 				sb.append(">[이전]</a>");
 			}
 			for(int i = startPage; i<=endPage; i++) {
@@ -24,13 +24,13 @@ public class pagingAction {
 					sb.append("["+i+"]");
 				}else {
 					sb.append("<a href="+file+"(");
-					sb.append(i+",'"+word+"')");
+					sb.append(i+",'"+word+"','"+subject+"')");
 					sb.append(">["+i+"]</a>");
 				}
 			}
 			if(endPage<pageCount) {
 				sb.append("<a href="+file+"(");
-				sb.append((startPage+pageBlock)+",'"+word+"')");
+				sb.append((startPage+pageBlock)+",'"+word+"','"+subject+"')");
 				sb.append(">[다음]</a>");
 			}
 		}

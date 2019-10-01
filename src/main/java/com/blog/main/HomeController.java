@@ -1,36 +1,23 @@
 package com.blog.main;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.blog.VO.BlogBoard;
 import com.blog.VO.BlogMember;
 import com.blog.service.BlogService;
-import com.blog.service.BlogServiceImpl;
 import com.blog.util.pagingAction;
 
 @Controller
@@ -45,35 +32,18 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String Home(Model model) {
 		return "login";
 	}
 
 	@GetMapping("mainView")
-	public String main(String id, String pwd, Model model, HttpSession session, HttpServletResponse response) {
-		String pwd1 = bService.login(id);
-		
-			if (pwd.equals(pwd1)) {
-				session.setAttribute("id", id);
-				return "index";
-			}
-			else {
-//			response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out;
-//			try {
-//				out = response.getWriter();
-//				out.println("<script>  alert('회원가입'); </script>");
-//				out.flush();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-				return "login";
-			}
-		}
+	public void main(String id, HttpSession session, Model model) {
+		session.setAttribute("id", id);
+	}
+
 	@GetMapping("index")
 	public void index() {
-		
+
 	}
 
 	@GetMapping("logout")
@@ -82,49 +52,46 @@ public class HomeController {
 		return "redirect:/";
 	}
 
-	@PostMapping("insert")
-	public void insert() {
-
-	}
-
 	@GetMapping("insert")
-	public String insert(BlogBoard bb, Model model, HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		bService.insert(bb);
-		ArrayList<BlogBoard> arr = bService.list(1, 5, "", id);
-		model.addAttribute("list", arr);
-		return "redirect:index";
+	public void insert() {
+		
 	}
+
+	@PostMapping("insert")
+	public String insert(BlogBoard bb) {
+		bService.insert(bb);
+		return "mainView";
+	}
+
 
 	@GetMapping("list")
 	public void list() {
+
 	}
 
 	@PostMapping("list")
-	public String list(String pageNum, String word, Model model, HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		String pageHtml;
+	public String list(String pageNum, String word, String id, Model model, String subject, HttpSession session) {
 
+		String pageHtml;
 		ArrayList<BlogBoard> arr;
-	
+		subject = subject == null ? "" : subject;
 		word = word == null ? "" : word;
 		if (pageNum == null)
 			pageNum = "1";
+		System.out.println(subject);
+		System.out.println(id);
+		System.out.println(word);
 		int currentPage = Integer.parseInt(pageNum);
-		int count = bService.getCount(word, id);
+		int count = bService.getCount(word, id, subject);
 		int pageSize = 5;
 		int startRow = (currentPage - 1) * pageSize + 1;
 		int endRow = startRow + pageSize - 1;
 		if (endRow > count)
 			endRow = count;
 		int boardNum = ((currentPage - 1) * pageSize);
-		/*
-		 * String pageHtml = page.paging(count, pageSize, currentPage, word);
-		 */
-		System.out.println(endRow);
-		arr = bService.list(startRow, endRow, word, id);
-		pageHtml = page.paging(count, pageSize, currentPage, word);
-	
+		arr = bService.list(startRow, endRow, word, id, subject);
+		pageHtml = page.paging(count, pageSize, currentPage, word, subject);
+
 		model.addAttribute("list", arr);
 		model.addAttribute("count", count);
 		model.addAttribute("boardNum", boardNum);
@@ -140,8 +107,20 @@ public class HomeController {
 	}
 
 	@GetMapping("login")
-	public void login(String id, HttpSession session) {
-		
+	public void login() {
+
+	}
+
+	@PostMapping("login")
+	public String login(String id, String pwd, Model model, HttpSession session, HttpServletResponse response) {
+		String pwd1 = bService.login(id);
+
+		if (pwd.equals(pwd1)) {
+			session.setAttribute("id", id);
+			return "mainView";
+		} else {
+			return "login";
+		}
 	}
 
 	@GetMapping("join")
@@ -150,7 +129,7 @@ public class HomeController {
 	}
 
 	@PostMapping("join")
-	public String Join(BlogMember bm) {
+	public String join(BlogMember bm) {
 		bService.join(bm);
 		return "redirect:/";
 	}
