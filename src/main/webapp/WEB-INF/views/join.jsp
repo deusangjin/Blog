@@ -101,11 +101,7 @@ $(document).ready(function(){
         <tr>
           <th><label for="">PW</label></th>
           <td><input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요!"></td>
-        </tr><!-- 
-         <tr>
-          <th><label for="">PW CHECK</label></th>
-          <td><input type="password" class="form-control" id="pwd_check" name="pwd_check" placeholder="비밀번호를 다시 입력해주세요!"></td>
-        </tr>  -->
+        </tr>
         <tr>
           <th><label for="">NAME</label></th>
           <td><input type="text" name="name" id="name" class="form-control"></td>

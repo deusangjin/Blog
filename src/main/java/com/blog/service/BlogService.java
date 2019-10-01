@@ -11,9 +11,9 @@ public interface BlogService {
 	
 	public String login(String id);
 	
-	public ArrayList<BlogBoard> list(int startRow, int endRow,String word,String id);
+	public ArrayList<BlogBoard> list(int startRow, int endRow,String word,String id,String subject);
 	
-	public int getCount(String word,String id);
+	public int getCount(String word,String id,String subject);
 
 	public void insert(BlogBoard bb);
 	
