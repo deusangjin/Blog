@@ -106,18 +106,23 @@ html.open {
 
 		$("#android").on("click", function() {
 			getSearch(1,"",$("#hAndroid").val());
+			$("#titleSubject").html("<h1 class='major' id='hsubject'>ANDROID</h1>");
 		});	
 	 	$("#java").on("click", function() {
 			getSearch(1,"",$("#hJava").val());
+			$("#titleSubject").html("<h1 class='major' id='hsubject'>JAVA</h1>");
 		});
 		$("#db").on("click", function() {
 			getSearch(1,"",$("#hDb").val());
+			$("#titleSubject").html("<h1 class='major' id='hsubject'>DB</h1>");
 		});
 		$("#spring").on("click", function() {
 			getSearch(1,"",$("#hSpring").val());
+			$("#titleSubject").html("<h1 class='major' id='hsubject'>SPRING</h1>");
 		});
 		$("#jsp").on("click", function() {
 			getSearch(1,"",$("#hJsp").val());
+			$("#titleSubject").html("<h1 class='major' id='hsubject'>JSP</h1>");
 		});
 	});
 

@@ -10,23 +10,28 @@
 </style>
 <script>
 	$(function(){
-		getSearch(1,"","");
+		getSearch(1,$("#word").val(),$("#subject").val());
 	})
 </script>
-
+  <input type = "hidden" id = "subject" value = "${subject}">
+  <input type = "hidden" id = "word" value = "${word }">
   <div class="container ">
   
     <div id="area">
       
       
     </div>
-    <div class="text-right">
-      <input type="button" value="글쓰기" id="insertBtn" onclick="javascript:Insert()">
-    </div>
-    <div class="text-center">
-      <input type="text" id="word">
-      <input type="button" id="btnSearch" value="검색" onclick = "javascript:Search($('#word').val())">
-    </div>
-    
-    
+
+  <div class=>
+    <input type="text" id="word">
   </div>
+  <div style="text-align: right;">
+    <input type="button" value="글쓰기" id="insertBtn"
+      onclick="javascript:Insert()"> <input type="button"
+      id="btnSearch" value="검색"
+      onclick="javascript:Search($('#word').val())">
+  </div>
+
+
+
+</div>

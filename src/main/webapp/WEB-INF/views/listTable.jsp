@@ -25,5 +25,5 @@
   </table>
 
  
-    <div class="text-center">${pageHtml} </div>
+    <div style="text-align: center;">${pageHtml} </div>
      <br>
