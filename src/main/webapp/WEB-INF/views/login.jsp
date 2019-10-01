@@ -1,73 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+  pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="js/all.js"></script>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<style>
-.mainDiv {
-	background: rgba(102, 153, 255, 0.2);
-	border-radius: 5px;
-	border: 1px solid black;
-	position: absolute;
-	top: 45%;
-	left: 45%;
-	text-align: center;
-	padding-left: 40px;
-	padding-right: 40px;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-.mainDiv a {
-	font-weight: bold;
-  color: white;
-}
-body{
-      background: url(imges/black.jpg) no-repeat center center fixed;
- 
-    -webkit-background-size: cover;
- 
-    -moz-background-size: cover;
- 
-    -o-background-size: cover;
- 
-    background-size: cover;
-}
-p{
- color: white;
-}
-</style>
+	<head>
+		<title>Dimension by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/noscript.css" />
+	</head>
+	<body class="is-preload">
 
-<script>
-	$(function(){
-		$("#join").on('click',function(){
-			location.href="join";
-		});
-		$("#login").on("click",function(){
-			$("#frm").submit();
-		})
-	})
-	
-	
-</script>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-</head>
-<body>
-  <div class="mainDiv">
-    <form action="mainView" method= "get" id ="frm">
-    
-      <p>ID</p><input type="text" name = "id"><br>
-      <p>PW</p><input type="password" name = "pwd">
-      <input type="button" id ="login" value="LOGIN">
-      <input type="button" id="join" value="가입">
-    </form>
-    
-  </div>
-</body>
+				<!-- Header -->
+          <%@include file="loginHeader.jsp" %>
+
+    <!-- Main -->
+    <div id="main">
+
+      <article id="loginView">
+        <h2 class="major" style="text-align: center;">Login</h2>
+        <form action="login" method="post" id="frm">
+          <p>ID</p>
+          <input type="text" name="id"><br>
+          <p>PW</p>
+          <input type="password" name="pwd"> <br> <input
+            type="button" id="login" value="LOGIN">
+        </form>
+      </article>
+      <article id="joinView">
+        <h2 class="major">간편회원가입</h2>
+        <form action="join" method="POST" id="frmJoin">
+          <p>ID</p>
+          <input type="text" id="userid" name="id"
+            placeholder="아이디를 입력하세요"><br>
+          <p>PW</p>
+          <input type="password" id="pwd" name="pwd" size="10">
+          <p>NAME</p>
+          <input type="text" name="name" id="name" class="form-control">
+          <div>
+            <p>GENDER</p>
+            <input type="radio" name="gender" checked="checked"
+              value="남">남 <input type="radio" name="gender"
+              value="여">여
+          </div>
+          <br> <input type="button" id="memberInsert" value="가입">
+        </form>
+      </article>
+
+
+    </div>
+
+    <!-- Footer -->
+					<%@include file="loginFooter.jsp" %>
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+
+  <!-- Scripts -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+  <script src="js/breakpoints.min.js"></script>
+  <script src="js/browser.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
+	</body>
 </html>

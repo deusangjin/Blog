@@ -25,7 +25,7 @@ public class BlogServiceImpl implements BlogService{
 		return pwd;
 	}
 	public ArrayList<BlogBoard> list(int startRow, int endRow,String word,String id,String subject){
-
+		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("startRow", startRow);
 		map.put("endRow",endRow);
@@ -34,7 +34,7 @@ public class BlogServiceImpl implements BlogService{
 		map.put("subject",subject);
 
 		ArrayList<BlogBoard> arr = bMap.list(map);
-
+		System.out.println(arr.size());
 		return arr;
  	}
 
