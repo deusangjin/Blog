@@ -10,7 +10,6 @@
 </style>
 <script>
 	$(document).ready(function() {
-
 		$("#subBtn").on("click", function() {
 			$("#frmInsert").submit();
 		})

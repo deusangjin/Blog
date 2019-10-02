@@ -47,6 +47,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="subject!=''">
 			and subject = #{subject}
 		</if>
-
 	</select>
+  
+  <select id="detail" resultType="com.blog.VO.BlogBoard">
+    select * from board where num = #{num}
+  </select>
 </mapper>

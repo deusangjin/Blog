@@ -14,7 +14,7 @@
     <tbody>
       <c:forEach items="${list}" var="list" varStatus="status">
         <tr>
-          <td><a href="detail">${boardNum+status.count}</a></td>
+          <td><input type= "button" onclick="javascript:getView(${list.num })">${boardNum+status.count}</td>
           <td>${list.subject}-${list.title}</td>
           <td>${list.id }</td>
           <td>${list.cal }</td>
