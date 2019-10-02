@@ -18,7 +18,6 @@ $(document).ready(function() {
 	$.ajax({
 		type : "get",
 		url : "list",
-		data : {"id" : $("#id").val()},
 		success : function(data) {
 			$("#view").html(data);
 		}
@@ -49,7 +48,6 @@ $(document).ready(function() {
     <!-- Intro -->
     <section id="intro" class="wrapper style1 fullscreen fade-up">
       <div class="inner">
-        <div id="view"></div>
         <input type="hidden" value="${id }" id="id">
 
         <%@include file="index.jsp"%>
@@ -65,7 +63,7 @@ $(document).ready(function() {
         <div class="content">
           <div class="inner">
           <form action="SubjectView" method="get" id="frmANDROID">
-            <input type="hidden" value="ANDROID" name="subject">
+            <input type="hidden" value="안드로이드" name="subject">
           </form>
             <h2>Android</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.

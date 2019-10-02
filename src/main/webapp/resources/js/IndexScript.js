@@ -3,12 +3,11 @@
  */
 
 	
-	function Search(word){
-		if ($("#word").val() == "") {
-				alert("검색어를 입력하세요.");
+	function Search(word,subject){
+		if (word == "") {
 				return false;
 			} 
-			getSearch(1, $("#word").val());
+			getSearch(1,word,subject);
 	}
 	
 	function Insert(){
@@ -20,7 +19,16 @@
   			}
   		})
 	}
-	
+	function SubjectInsert(subject){
+		$.ajax({
+			type : "get",
+			url : "SubjectInsert",
+			data:{"subject":subject},				
+			success : function(data){
+				$("#view").html(data);
+			}
+		})
+}
 	function getSearch(pageNum, word,subject) {
 		$.ajax({
 			type : "post",
@@ -36,3 +44,20 @@
 			}
 		})
 	} 
+	
+	function getView(num){
+		$.ajax({
+	  	type:"post",
+	  	url:"SubjectView",
+	  	data:{"num" : num},
+	  	success : function(data){
+	  		$("#detailView").html(data);
+	  	}
+	  });
+	}
+	
+	function getView1(num){
+		
+	}
+
+	
