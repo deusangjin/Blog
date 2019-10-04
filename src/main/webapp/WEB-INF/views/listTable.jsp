@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<style>
+  td{
+  cursor: pointer;
+  }
+</style>
 <table class="table table-hover table-bordered">
     <thead>
       <tr>
@@ -14,8 +18,8 @@
     <tbody>
       <c:forEach items="${list}" var="list" varStatus="status">
         <tr>
-          <td><a href="detail">${boardNum+status.count}</a></td>
-          <td>${list.subject}-${list.title}</td>
+          <td>${boardNum+status.count}</td>
+          <td><a type= "button" onclick="javascript:getView1('${list.subject}',${list.num })">${list.subject}-${list.title}</a></td>
           <td>${list.id }</td>
           <td>${list.cal }</td>
         </tr>
@@ -25,5 +29,5 @@
   </table>
 
  
-    <div class="text-center">${pageHtml} </div>
+    <div style="text-align: center;">${pageHtml} </div>
      <br>

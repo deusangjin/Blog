@@ -3,6 +3,7 @@ package com.blog.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class BlogServiceImpl implements BlogService{
 		return pwd;
 	}
 	public ArrayList<BlogBoard> list(int startRow, int endRow,String word,String id,String subject){
-
+		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("startRow", startRow);
 		map.put("endRow",endRow);
@@ -34,7 +35,6 @@ public class BlogServiceImpl implements BlogService{
 		map.put("subject",subject);
 
 		ArrayList<BlogBoard> arr = bMap.list(map);
-
 		return arr;
  	}
 
@@ -53,4 +53,13 @@ public class BlogServiceImpl implements BlogService{
 		int	count = bMap.getCount(map);
 		return count;
 	}
+	
+	public BlogBoard detail(int num) {
+		return bMap.detail(num);
+	}
+	public void remove(int num) {
+		bMap.remove(num);
+	}
+
+
 }
