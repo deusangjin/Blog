@@ -20,5 +20,6 @@ public interface BlogService {
 	
 	public BlogBoard detail(int num);
 	
+	public void remove(int num);
 
 }

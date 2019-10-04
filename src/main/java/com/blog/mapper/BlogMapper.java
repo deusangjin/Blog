@@ -22,4 +22,7 @@ public interface BlogMapper {
 	public void insert(BlogBoard bb);
 	
 	public BlogBoard detail(int num);
+	
+	public void remove(int num);
+
 }

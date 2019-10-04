@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <!--
   Hyperspace by HTML5 UP
@@ -15,21 +16,13 @@
   content="width=device-width, initial-scale=1, user-scalable=no" />
 <script
   src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="js/IndexScript.js"></script>
 <script>
 	$(document).ready(function() {
-		$.ajax({
-			type : "get",
-			url : "list",
-			data : {
-				"subject" : $("#subject").val()
-			},
-			success : function(data) {
-				$("#view").html(data);
-				$("#titleSubject").html("<h1 class='major' id='hsubject'>${subject }</h1>");
-			}
-		});
-		
-		
+		getSubejectView($("#subject").val());
+		if($("#num").val()!='0'){
+			getView($("#num").val());
+		}
 	})
 	
 </script>
@@ -38,11 +31,10 @@
 <body class="is-preload"
   style="text-align: center; background-color: black;">
 
-<input type = "text" value = "${num }" id = "num">
+<input type = "hidden" value = "${num }" id = "num">
 <%@include file="SubJectHeader.jsp" %>
   <!-- Wrapper -->
   <div id="wrapper">
-
     <!-- Main -->
     <section id="main" class="wrapper style2 spotlights">
       <div class="inner">
@@ -51,12 +43,9 @@
           alt="" /></span> <input type="hidden" id="id" value="${id}">
         <input type="hidden" id="subject" value="${subject}">
         <div class="container">
-          <div id="view"></div>
-          
-          
-          <div id="detailView"></div>
-          
-          
+          <div id="view" ></div>
+          <br>
+             <div id="detailView"></div>
         </div>
       </div>
     </section>

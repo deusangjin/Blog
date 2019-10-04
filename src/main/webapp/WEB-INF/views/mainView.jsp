@@ -43,10 +43,12 @@ $(document).ready(function() {
     </div>
   </section>
   <!-- Wrapper -->
+  
   <div id="wrapper">
-
+<%@include file="SubJectHeader.jsp" %>
     <!-- Intro -->
     <section id="intro" class="wrapper style1 fullscreen fade-up">
+    
       <div class="inner">
         <input type="hidden" value="${id }" id="id">
 
@@ -64,6 +66,7 @@ $(document).ready(function() {
           <div class="inner">
           <form action="SubjectView" method="get" id="frmANDROID">
             <input type="hidden" value="안드로이드" name="subject">
+            <input type="hidden" value="0" name="num">
           </form>
             <h2>Android</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -86,6 +89,7 @@ $(document).ready(function() {
           <div class="inner">
           <form action="SubjectView" method="get" id="frmJAVA">
             <input type="hidden" value="JAVA" name="subject">
+            <input type="hidden" value="0" name="num">
           </form>
             <h2>Java</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -108,6 +112,7 @@ $(document).ready(function() {
           <div class="inner">
           <form action="SubjectView" method="get" id="frmDB">
             <input type="hidden" value="DB" name="subject">
+            <input type="hidden" value="0" name="num">
           </form>
             <h2>DataBase</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -129,6 +134,7 @@ $(document).ready(function() {
           <div class="inner">
             <form action="SubjectView" method="get" id="frmSPRING">
               <input type="hidden" value="SPRING" name="subject">
+            <input type="hidden" value="0" name="num">
             </form>
             <h2>Spring</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -151,6 +157,7 @@ $(document).ready(function() {
         
         <form action ="SubjectView" method="get" id = "frmJSP">
           <input type ="hidden" value = "JSP" id = "subject" name="subject">
+            <input type="hidden" value="0" name="num">
         </form>
           <div class="inner">
             <h2>Jsp</h2>
