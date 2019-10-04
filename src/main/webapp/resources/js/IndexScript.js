@@ -15,8 +15,10 @@
 		$.ajax({
   			type : "get",
   			url : "insert",
+  			data:{"num" : $("#num").val()},
   			success : function(data){
   				$("#view").html(data);
+  				$("#detailView").html("");
   			}
   		})
 	}

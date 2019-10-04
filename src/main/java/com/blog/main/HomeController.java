@@ -60,7 +60,7 @@ public class HomeController {
 
 	@GetMapping("insert")
 	public void insert() {
-		
+	
 	}
 
 	@PostMapping("insert")
@@ -122,6 +122,7 @@ public class HomeController {
 
 	}
 
+	
 	@PostMapping("login")
 	public String login(String id, String pwd, HttpSession session) {
 		String pwd1 = bService.login(id);

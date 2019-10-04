@@ -44,8 +44,8 @@ $(document).ready(function() {
   </section>
   <!-- Wrapper -->
   
-  <div id="wrapper">
-<%@include file="SubJectHeader.jsp" %>
+  <div id="wrapper" >
+<%@include file="mainHeader.jsp" %>
     <!-- Intro -->
     <section id="intro" class="wrapper style1 fullscreen fade-up">
     
@@ -154,7 +154,6 @@ $(document).ready(function() {
         <a href="#" class="image"><img src="images/img03.jpg" alt=""
           data-position="25% 25%" /></a>
         <div class="content">
-        
         <form action ="SubjectView" method="get" id = "frmJSP">
           <input type ="hidden" value = "JSP" id = "subject" name="subject">
             <input type="hidden" value="0" name="num">
@@ -170,6 +169,7 @@ $(document).ready(function() {
           </div>
         </div>
       </section>
+    
       
 <!-- -------------------------------------------------------------------------------------------- -->
 
