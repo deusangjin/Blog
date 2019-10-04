@@ -1,6 +1,8 @@
 package com.blog.main;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,11 +16,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.blog.VO.BlogBoard;
 import com.blog.VO.BlogMember;
 import com.blog.service.BlogService;
 import com.blog.util.pagingAction;
+
+import oracle.net.aso.b;
 
 @Controller
 public class HomeController {
@@ -37,8 +43,8 @@ public class HomeController {
 	}
 
 	@GetMapping("mainView")
-	public void main(String id, HttpSession session, Model model) {
-		session.setAttribute("id", id);
+	public void main() {
+		
 	}
 
 	@GetMapping("index")
@@ -54,25 +60,24 @@ public class HomeController {
 
 	@GetMapping("insert")
 	public void insert() {
-		
+	
 	}
 
 	@PostMapping("insert")
 	public String insert(BlogBoard bb) {
 		bService.insert(bb);
-		return "mainView";
+		return "redirect:mainView";
 	}
 
 
 	@GetMapping("list")
 	public void list() {
+		
 	}
 
 	@PostMapping("list")
-	public String list(String pageNum, String word, String id, Model model, String subject, HttpSession session) {
+	public String list(String pageNum, String word, String id, String subject, Model model ) {
 		
-		System.out.println("listpost");
-		System.out.println(subject);
 		String pageHtml;
 		ArrayList<BlogBoard> arr;
 		subject = subject == null ? "" : subject;
@@ -90,7 +95,7 @@ public class HomeController {
 		int boardNum = ((currentPage - 1) * pageSize);
 		arr = bService.list(startRow, endRow, word, id, subject);
 		pageHtml = page.paging(count, pageSize, currentPage, word, subject);
-
+		
 		model.addAttribute("list", arr);
 		model.addAttribute("count", count);
 		model.addAttribute("boardNum", boardNum);
@@ -98,17 +103,26 @@ public class HomeController {
 		return "listTable";
 	}
 
-	@GetMapping("detail")
-	public String detail(Model model) {
-		logger.info("detailView");
-		return "detail";
-	}
+	
+	
 
+	@GetMapping("detail")
+	public void detail(int num,Model model,String id) {
+		
+	}
+	
+	@PostMapping("detail")
+	public void detail(int num ,Model model){
+		BlogBoard bb = bService.detail(num);
+		model.addAttribute("bb",bb);
+		model.addAttribute("num",num);
+	}
 	@GetMapping("login")
 	public void login() {
 
 	}
 
+	
 	@PostMapping("login")
 	public String login(String id, String pwd, HttpSession session) {
 		String pwd1 = bService.login(id);
@@ -133,10 +147,58 @@ public class HomeController {
 	}
 	
 	@GetMapping("SubjectView")
-	public void SubjectView(String subject,HttpSession session,Model model) {
-		System.out.println("-----------------------------");		
-		System.out.println(subject);
+	public void SubjectView( String subject,Model model,@RequestParam("num") int num) {
+	
 		model.addAttribute("subject",subject);
-			
+		model.addAttribute("num",num);
+	}
+	
+	@PostMapping("SubjectView")
+	public void SubjectView(int num ,Model model) {
+		model.addAttribute("num",num);
+	}
+	
+	@GetMapping("SubjectList")
+	public void SubjectList() {
+		
+	}
+	
+	@PostMapping("SubjectList")
+	public String SubjectList(String pageNum, String word, String id, String subject, Model model ) {
+		String pageHtml;
+		ArrayList<BlogBoard> arr;
+		subject = subject == null ? "" : subject;
+		word = word == null ? "" : word;
+		if (pageNum == null)
+			pageNum = "1";
+
+		int currentPage = Integer.parseInt(pageNum);
+		int count = bService.getCount(word, id, subject);
+		int pageSize = 5;
+		int startRow = (currentPage - 1) * pageSize + 1;
+		int endRow = startRow + pageSize - 1;
+		if (endRow > count)
+			endRow = count;
+		int boardNum = ((currentPage - 1) * pageSize);
+		arr = bService.list(startRow, endRow, word, id, subject);
+		pageHtml = page.paging(count, pageSize, currentPage, word, subject);
+
+		model.addAttribute("list", arr);
+		model.addAttribute("count", count);
+		model.addAttribute("boardNum", boardNum);
+		model.addAttribute("pageHtml", pageHtml);
+		
+		return "SubjectListTable";
+	}
+	
+	@GetMapping("SubjectInsert")
+	public void SubjectInsert() {
+		
+	}
+	@GetMapping("remove")
+	public String remove(int num) {
+		System.out.println(num);
+		bService.remove(num);
+	return "detail";
 	}
 }

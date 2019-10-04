@@ -18,7 +18,6 @@ $(document).ready(function() {
 	$.ajax({
 		type : "get",
 		url : "list",
-		data : {"id" : $("#id").val()},
 		success : function(data) {
 			$("#view").html(data);
 		}
@@ -44,12 +43,13 @@ $(document).ready(function() {
     </div>
   </section>
   <!-- Wrapper -->
-  <div id="wrapper">
-
+  
+  <div id="wrapper" >
+<%@include file="mainHeader.jsp" %>
     <!-- Intro -->
     <section id="intro" class="wrapper style1 fullscreen fade-up">
+    
       <div class="inner">
-        <div id="view"></div>
         <input type="hidden" value="${id }" id="id">
 
         <%@include file="index.jsp"%>
@@ -65,7 +65,8 @@ $(document).ready(function() {
         <div class="content">
           <div class="inner">
           <form action="SubjectView" method="get" id="frmANDROID">
-            <input type="hidden" value="ANDROID" name="subject">
+            <input type="hidden" value="안드로이드" name="subject">
+            <input type="hidden" value="0" name="num">
           </form>
             <h2>Android</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -88,6 +89,7 @@ $(document).ready(function() {
           <div class="inner">
           <form action="SubjectView" method="get" id="frmJAVA">
             <input type="hidden" value="JAVA" name="subject">
+            <input type="hidden" value="0" name="num">
           </form>
             <h2>Java</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -110,6 +112,7 @@ $(document).ready(function() {
           <div class="inner">
           <form action="SubjectView" method="get" id="frmDB">
             <input type="hidden" value="DB" name="subject">
+            <input type="hidden" value="0" name="num">
           </form>
             <h2>DataBase</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -131,6 +134,7 @@ $(document).ready(function() {
           <div class="inner">
             <form action="SubjectView" method="get" id="frmSPRING">
               <input type="hidden" value="SPRING" name="subject">
+            <input type="hidden" value="0" name="num">
             </form>
             <h2>Spring</h2>
             <p>Phasellus convallis elit id ullamcorper pulvinar.
@@ -150,9 +154,9 @@ $(document).ready(function() {
         <a href="#" class="image"><img src="images/img03.jpg" alt=""
           data-position="25% 25%" /></a>
         <div class="content">
-        
         <form action ="SubjectView" method="get" id = "frmJSP">
           <input type ="hidden" value = "JSP" id = "subject" name="subject">
+            <input type="hidden" value="0" name="num">
         </form>
           <div class="inner">
             <h2>Jsp</h2>
@@ -165,6 +169,7 @@ $(document).ready(function() {
           </div>
         </div>
       </section>
+    
       
 <!-- -------------------------------------------------------------------------------------------- -->
 

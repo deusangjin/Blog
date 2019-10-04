@@ -1,6 +1,7 @@
 package com.blog.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.blog.VO.BlogBoard;
 import com.blog.VO.BlogMember;
@@ -17,5 +18,8 @@ public interface BlogService {
 
 	public void insert(BlogBoard bb);
 	
+	public BlogBoard detail(int num);
+	
+	public void remove(int num);
 
 }

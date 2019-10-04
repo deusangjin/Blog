@@ -10,7 +10,6 @@
 </style>
 <script>
 	$(document).ready(function() {
-
 		$("#subBtn").on("click", function() {
 			$("#frmInsert").submit();
 		})
@@ -19,7 +18,7 @@
 
 <div class="container ">
 	<div style="width: 60%; margin: auto;">
-		<h2 style="text-align: center;">글 작성</h2>
+		<h2 style="text-align: center;"></h2>
 
 		<form method="post" action="insert" id="frmInsert">
 

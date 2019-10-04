@@ -36,14 +36,15 @@ html.open {
 }
 
 #menu {
-	width: 10%;
+	width: 15%;
 	height: 100%;
 	position: absolute;
 	top: 0px;
-	left: -352px;
+	left: -400px;
 	z-index: 10;
 	border: 1px solid #c9c9c9;
-	background-color: white;
+	background-color: black;
+  
 	transition: All 0.2s ease;
 	-webkit-transition: All 0.2s ease;
 	-moz-transition: All 0.2s ease;
@@ -55,10 +56,10 @@ html.open {
 }
 
 #menu.open p {
-	color: black;
-	left: 25%;
+	color: white;
+	left: 0%;
 	position: relative;
-	top: 45%;
+	top: 15%;
 	font-size: 1.5em;
 	font-weight: bold;
 	cursor: pointer;
@@ -82,8 +83,9 @@ html.open {
 <div onclick="history.back();" class="page_cover"></div>
 <div id="menu">
 	<p id="android">
-		<input type="hidden" id="hAndroid" value="안드로이드"> 안드로이드
+     <input type="hidden" id="hAndroid" name = "subject" value="안드로이드"> 안드로이드
 	</p>
+  
 	<p id="java">
 		<input type="hidden" id="hJava" value="JAVA">JAVA
 	</p>
@@ -99,6 +101,26 @@ html.open {
 	<div onclick="history.back();" class="close"></div>
 </div>
 
+    <form action = "SubjectView" method ="get" id = "frmAndroid">
+      <input type="hidden" name = "subject" value="안드로이드"> 
+            <input type="hidden" value="0" name="num">
+    </form>
+    <form action = "SubjectView" method ="get" id = "frmJava">
+      <input type="hidden" name = "subject" value="JAVA"> 
+            <input type="hidden" value="0" name="num">
+    </form>
+    <form action = "SubjectView" method ="get" id = "frmDb">
+      <input type="hidden" name = "subject" value="DB"> 
+            <input type="hidden" value="0" name="num">
+    </form>
+    <form action = "SubjectView" method ="get" id = "frmSpring">
+      <input type="hidden" name = "subject" value="SPRING"> 
+            <input type="hidden" value="0" name="num">
+    </form>
+    <form action = "SubjectView" method ="get" id = "frmJsp">
+      <input type="hidden" name = "subject" value="JSP"> 
+            <input type="hidden" value="0" name="num">
+    </form>
 <script>
 	$(".slideBtn").click(function() {
 		$("#menu,.page_cover,html").addClass("open");
@@ -106,22 +128,27 @@ html.open {
 
 		$("#android").on("click", function() {
 			getSearch(1,"",$("#hAndroid").val());
+			$("#frmAndroid").submit();
 			$("#titleSubject").html("<h1 class='major' id='hsubject'>ANDROID</h1>");
 		});	
 	 	$("#java").on("click", function() {
 			getSearch(1,"",$("#hJava").val());
+			$("#frmJava").submit();
 			$("#titleSubject").html("<h1 class='major' id='hsubject'>JAVA</h1>");
-		});
+	 	});
 		$("#db").on("click", function() {
 			getSearch(1,"",$("#hDb").val());
+			$("#frmDb").submit();
 			$("#titleSubject").html("<h1 class='major' id='hsubject'>DB</h1>");
 		});
 		$("#spring").on("click", function() {
 			getSearch(1,"",$("#hSpring").val());
+			$("#frmSpring").submit();
 			$("#titleSubject").html("<h1 class='major' id='hsubject'>SPRING</h1>");
 		});
 		$("#jsp").on("click", function() {
 			getSearch(1,"",$("#hJsp").val());
+			$("#frmJsp").submit();
 			$("#titleSubject").html("<h1 class='major' id='hsubject'>JSP</h1>");
 		});
 	});

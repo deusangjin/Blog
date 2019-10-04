@@ -2,6 +2,7 @@ package com.blog.mapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +19,10 @@ public interface BlogMapper {
 	
 	public int getCount(HashMap<String, Object> map);
 	
-
 	public void insert(BlogBoard bb);
+	
+	public BlogBoard detail(int num);
+	
+	public void remove(int num);
+
 }
