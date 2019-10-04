@@ -103,18 +103,23 @@ html.open {
 
     <form action = "SubjectView" method ="get" id = "frmAndroid">
       <input type="hidden" name = "subject" value="안드로이드"> 
+            <input type="hidden" value="0" name="num">
     </form>
     <form action = "SubjectView" method ="get" id = "frmJava">
       <input type="hidden" name = "subject" value="JAVA"> 
+            <input type="hidden" value="0" name="num">
     </form>
     <form action = "SubjectView" method ="get" id = "frmDb">
       <input type="hidden" name = "subject" value="DB"> 
+            <input type="hidden" value="0" name="num">
     </form>
     <form action = "SubjectView" method ="get" id = "frmSpring">
       <input type="hidden" name = "subject" value="SPRING"> 
+            <input type="hidden" value="0" name="num">
     </form>
     <form action = "SubjectView" method ="get" id = "frmJsp">
       <input type="hidden" name = "subject" value="JSP"> 
+            <input type="hidden" value="0" name="num">
     </form>
 <script>
 	$(".slideBtn").click(function() {

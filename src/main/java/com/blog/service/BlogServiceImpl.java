@@ -57,4 +57,9 @@ public class BlogServiceImpl implements BlogService{
 	public BlogBoard detail(int num) {
 		return bMap.detail(num);
 	}
+	public void remove(int num) {
+		bMap.remove(num);
+	}
+
+
 }

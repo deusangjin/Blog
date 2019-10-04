@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.blog.VO.BlogBoard;
@@ -59,7 +60,7 @@ public class HomeController {
 
 	@GetMapping("insert")
 	public void insert() {
-		
+	
 	}
 
 	@PostMapping("insert")
@@ -102,23 +103,26 @@ public class HomeController {
 		return "listTable";
 	}
 
+	
+	
+
 	@GetMapping("detail")
 	public void detail(int num,Model model,String id) {
 		
 	}
 	
 	@PostMapping("detail")
-	public String detail(int num ,Model model){
+	public void detail(int num ,Model model){
 		BlogBoard bb = bService.detail(num);
 		model.addAttribute("bb",bb);
-		return "detailTable";
+		model.addAttribute("num",num);
 	}
-
 	@GetMapping("login")
 	public void login() {
 
 	}
 
+	
 	@PostMapping("login")
 	public String login(String id, String pwd, HttpSession session) {
 		String pwd1 = bService.login(id);
@@ -143,8 +147,10 @@ public class HomeController {
 	}
 	
 	@GetMapping("SubjectView")
-	public void SubjectView(String subject ,Model model) {
+	public void SubjectView( String subject,Model model,@RequestParam("num") int num) {
+	
 		model.addAttribute("subject",subject);
+		model.addAttribute("num",num);
 	}
 	
 	@PostMapping("SubjectView")
@@ -189,11 +195,10 @@ public class HomeController {
 	public void SubjectInsert() {
 		
 	}
-
-	@PostMapping("SubjectInsert")
-	public String SubjectInsert(BlogBoard bb) {
-		bService.insert(bb);
-		return "redirect:SubjectView";
+	@GetMapping("remove")
+	public String remove(int num) {
+		System.out.println(num);
+		bService.remove(num);
+	return "detail";
 	}
-	
 }

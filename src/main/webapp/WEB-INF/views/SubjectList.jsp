@@ -10,9 +10,10 @@
 </style>
 <script>
 	$(function(){
-		getSearch(1,$("#word").val(),$("#subject").val());
+		getSubjectViewSearch(1,$("#word").val(),$("#subject").val());
 	})
 </script>
+
   <input type = "hidden" id = "subject" value = "${subject}">
   <div class="container ">
   
