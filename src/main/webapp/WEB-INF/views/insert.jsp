@@ -5,17 +5,14 @@
 
 <script type="text/javascript" src="resources/se/js/HuskyEZCreator.js" charset="utf-8" ></script>
 <script type="text/javascript" src="resources/se/js/jindo.min.js" charset="utf-8" ></script>
+<link rel="stylesheet" href="resources/se/css/smart_editor2_in.css" />
 <style>
 .container {
 	margin-top: 100px;
 }
-#frmInsert{margin: 30px 0;}
-img{
-		width: 80%;
-		height: 80%;
-}
+
 </style>
-<div class="container ">
+<div class="container " >
 	<div style="width: 60%; margin: auto;">
 		<h2 style="text-align: center;"></h2>
 
@@ -31,7 +28,6 @@ img{
 		</div>
 		<input type = "hidden" value = "${id }" name = "id">
 		<div>
-			<div><b>제목</b></div>
 			<input type="text" id="title" name="title" value="" maxlength="100" style="width: 100%;"/>
 		</div>
 		<div class="contentDiv">

@@ -12,13 +12,13 @@
 	}
 	
 	function Insert(){
+		$("#detailView").html("");
 		$.ajax({
   			type : "get",
   			url : "insert",
   			data:{"num" : $("#num").val()},
   			success : function(data){
   				$("#view").html(data);
-  				$("#detailView").html("");
   			}
   		})
 	}
@@ -43,7 +43,6 @@
 				"subject" : subject
 				},
 			success : function(data){
-				
 				$("#area").html(data);
 
 			}

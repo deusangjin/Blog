@@ -10,10 +10,10 @@ img{
 <table class="table table-hover table-bordered">
   <tbody>
     <tr>
-      <th scope="row">글 번호${num }</th>
+      <th scope="row" colspan="3">글 번호</th>
       <td>${bb.num }</td>
-      <th scope="row">조회수</th>
-      <td></td>
+
+ 
     </tr>
     <tr>
       <th scope="row">작성자</th>
@@ -26,7 +26,11 @@ img{
       <td colspan="3">${bb.title }</td>
     </tr>
     <tr>
-      <td colspan="4" style="border: 1px solid #ccc; height: 100px;">${bb.content }</td>
+      <td colspan="4" style="border: 1px solid #ccc; height: 100px;">
+			<div class="contentDiv">
+			 	${bb.content }
+			</div>
+		</td>
     </tr>
   </tbody>
 </table>
@@ -34,4 +38,7 @@ img{
   <input type="button" value="수정" onclick="update('${num}')" >
   <input type="button" value="삭제" id = "removeBtn" onclick="remove('${num}')">
   </div>
+  
+
+
   

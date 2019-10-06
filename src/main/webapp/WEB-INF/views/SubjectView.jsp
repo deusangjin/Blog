@@ -34,24 +34,24 @@
 <input type = "hidden" value = "${num }" id = "num">
 <%@include file="SubJectHeader.jsp" %>
   <!-- Wrapper -->
-  <div id="wrapper">
-    <!-- Main -->
-    <section id="main" class="wrapper style2 spotlights">
-      <div class="inner">
-        <div id="titleSubject"></div>
-        <span class="image fit"><img src="images/pic04.jpg"
-          alt="" /></span> <input type="hidden" id="id" value="${id}">
-        <input type="hidden" id="subject" value="${subject}">
-        <div class="container">
-          <div id="view" ></div>
-          <br>
-             <div id="detailView"></div>
-        </div>
-      </div>
-    </section>
-  </div>
+	<div id="wrapper">
+		<!-- Main -->
+		<section id="main" class="wrapper style2 spotlights">
+			<div class="inner">
+				<div id="titleSubject"></div>
+				<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+				<input type="hidden" id="id" value="${id}"> <input
+					type="hidden" id="subject" value="${subject}">
+				<div class="container">
+					<div id="view"></div>
+						<br>
+					<div id="detailView"></div>
+				</div>
+			</div>
+		</section>
+	</div>
 
-  <!-- Footer -->
+	<!-- Footer -->
   <footer id="footer" class="wrapper style1-alt">
     <div class="inner">
       <ul class="menu">

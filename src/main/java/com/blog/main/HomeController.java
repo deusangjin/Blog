@@ -200,10 +200,7 @@ public class HomeController {
 		return "SubjectListTable";
 	}
 	
-	@GetMapping("SubjectInsert")
-	public void SubjectInsert() {
-		
-	}
+
 	@GetMapping("remove")
 	public String remove(int num) {
 		System.out.println(num);
@@ -218,7 +215,6 @@ public class HomeController {
 		String fileName = imgfile.getOriginalFilename();
 		String fileType = fileName.substring(fileName.lastIndexOf("."), fileName.length());
 		String replaceName = cal.getTimeInMillis() + fileType;  
-		
 		String path = request.getSession().getServletContext().getRealPath("/")+File.separator+"resources/upload";
 		file.fileUpload(imgfile, path, replaceName);
 		model.addAttribute("path", path);
