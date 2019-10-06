@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="css/Main/MainView.css" />
 <link rel="stylesheet" href="css/Main/mainNoscript.css" />
     <header id="header">
-        <a href="mainView" class="title">Hyperspace</a>
+        <a href="mainView" class="title">${id }'s Blog</a>
         <nav>
           <ul>
 <!--             <li><a href="index.html">Home</a></li>
