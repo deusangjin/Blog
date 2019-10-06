@@ -10,5 +10,11 @@
 <link rel="stylesheet" href="css/Main/mainNoscript.css" />
     <header id="header">
         <a href="mainView" class="title">${id }'s Blog</a>
-
+          <nav>
+          <ul>
+<!--             <li><a href="index.html">Home</a></li>
+            <li><a href="generic.html" class="active">Generic</a></li> -->
+            <li><a href="logout">logout</a></li>
+          </ul>
+        </nav>
       </header>
