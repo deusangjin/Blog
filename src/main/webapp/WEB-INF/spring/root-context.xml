@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:context="http://www.springframework.org/schema/context"
-  xmlns:tx="http://www.springframework.org/schema/tx"
-  xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-  xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
@@ -24,7 +25,24 @@
   
   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource"></property>
+    <property name="mapperLocations" value="classpath*:org/sample/se/*.xml"></property>
+    <property name="typeAliasesPackage" value="org.sample.se"></property>
+    <property name="configLocation" value="/WEB-INF/mybatis/mybatisConfig.xml"></property>
   </bean>
+  
+  <bean id="sqlScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer" 
+		p:basePackage="org.sample.se"
+		p:sqlSessionFactoryBeanName="sqlSessionFactory" >
+	</bean>	
+	
+	<!-- 트랜잭션 매니저 -->
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource" />
+	<!-- Annotation 기반 트랜잭션 설정 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 선언적 트렌젝션 사용 설정 -->
+	<tx:annotation-driven proxy-target-class="true"/>
+	
   <mybatis-spring:scan base-package="com.blog.mapper"/>
   <context:component-scan base-package="com.blog.service"/>
   <context:component-scan base-package="com.blog.VO"/>
