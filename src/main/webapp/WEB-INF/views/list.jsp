@@ -23,7 +23,7 @@
   </div>
   <br>
   <div style="text-align: right;">
-    <input type="button" value="글쓰기" id="insertBtn" onclick="javascript:Insert()">
+  
        <input type="button" id="btnSearch" value="검색" onclick="javascript:Search($('#word').val(),$('#subject').val())">
   </div>
 
